@@ -1,0 +1,14 @@
+{
+	"extName": {
+		"message": "dphong test extension",
+		"description": "alert(1)"
+	},
+	"extension_sname": {
+		"message": "dphong's Chrome ext",
+		"description": "short name"
+	},
+	"extension_desc": {
+		"message": "dphong's Chrome ext description",
+		"description": "description"
+	}
+}
