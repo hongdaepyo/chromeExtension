@@ -1,11 +1,24 @@
 <html>
 <title>Chrome_extension_popup</title>
 <head>
-	<script src="scripts.js"></script>
+	<style>
+		button {
+			height: 50px;
+			width: 50px;
+			outline: none;
+		}
+		
+		#popupMainDiv {
+			height: 400px;
+			width: 400px;
+		}
+	</style>
 </head>
 <body>
-
-<div id="button1">button popup</div>
+<div id="popupMainDiv">
+	<button id="changeColor">button</button>
+</div>
+<script src="popup.js"></script>
 
 
 </body>

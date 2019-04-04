@@ -23,7 +23,7 @@
     },
 
     "permissions": [
-        "activeTab", "http://*/*", "https://*/*"
+        "declarativeContent", "storage"
     ],
 
     "content_scripts": [{
@@ -33,6 +33,7 @@
     }],
 
     "background": {
-        "scripts": ["background.js"]
+        "scripts": ["background.js"],
+		"persistent": false
     }
 }

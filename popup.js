@@ -1,16 +1,7 @@
-chrome.extension.onMessage.addListener(function(request, sender) {
-    if (request.action == "scripts") {
-        document.body.innerText = request.source;
-    }
-});
+let changeColor = document.getElementById('changeColor');
 
-function onWindowLoad() {
-    chrome.tabs.executeScript(null, {
-        file: "scripts.js"
-        }, function() {
-            if (chrome.extension.lastError) {
-                document.body.innerText = 'There was an error injecting script : \n' + chrome.extension.lastError.message;
-            }
-        });
-}
-window.onload = onWindowLoad;
+chrome.storage.sync.get('color', function(data) {
+	changeColor.style.backgroundColor = data.color;
+	changeColor.setAttribute('value', data.color);
+	changeColor.addEventListener("click", function(){alert(1);});
+});
