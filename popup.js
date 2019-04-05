@@ -1,14 +1,14 @@
 let changeColor = document.getElementById('changeColor');
 
-document.body.addEventListener("click", function(e){
-	if(e.target.tagName.toLowerCase() === "li") {
-		alert('li');
-	}
-});
-
 chrome.storage.sync.get('color', function(data) {
     changeColor.style.backgroundColor = data.color;
     changeColor.setAttribute('value', data.color);
+});
+
+document.body.addEventListener("click", function(e){
+	if(e.target.tagName.toLowerCase() == 'li'){
+			tabClose(e.target);
+	}
 });
 
 changeColor.onclick = function(element) {
@@ -36,16 +36,14 @@ changeColor.onclick = function(element) {
 		testStr += "</ul>"
 		popupMainDiv.innerHTML = testStr;
 		
-		// chrome.tabs.get(122, function(tab){
-			// chrome.tabs.remove(tab.id);
-		// });
-		
-		// addTabListEvent();
-		
 		//디버깅용
-		document.body.innerText += document.body.innerHTML;
+		// document.body.innerText += document.body.innerHTML;
 	});
 		
+}
+
+function createTabList(){
+	
 }
 
 function addTabListEvent(){
@@ -56,10 +54,7 @@ function addTabListEvent(){
 	});
 }
 
-function tabClose(e){
-	alert(e.target.name);
-	var tabID = e.target.name.match(/\d+/g)[0];
-	chrome.tabs.get(tabID, function(tab){
-		chrome.tabs.remove(tab.id);
-	});
+function tabClose(elem){
+	var tabID = elem.getAttribute("name") * 1;
+	chrome.tabs.remove(tabID);
 }
