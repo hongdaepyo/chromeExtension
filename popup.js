@@ -7,14 +7,12 @@ chrome.storage.sync.get('color', function(data) {
 
 document.body.addEventListener("click", function(e){
 	if(e.target.tagName.toLowerCase() == 'li'){
-			tabClose(e.target);
+		tabClose(e.target);
 	}
 });
 
 changeColor.onclick = function(element) {
 	let color = element.target.value;
-	let testStr = "";
-	let popupMainDiv = document.getElementById("popupMainDiv");
 	// chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		// chrome.tabs.executeScript(
 			// tabs[0].id,
@@ -26,12 +24,19 @@ changeColor.onclick = function(element) {
 		// );
 	// });
 	
+	createTabList();
 
+		
+}
+
+function createTabList(){
+	let testStr = "";
+	let popupMainDiv = document.getElementById("popupMainDiv");
 	chrome.tabs.query({}, function(tabs) {
 		testStr += "<ul id='tabListUL'>";
 		for(var i = 0; tabs[i]; i++){
 			testStr += "<li id='tabListLi_" + i + "' name='" + tabs[i].id + "'>" 
-						+ (i + 1) + ". " + tabs[i].id + " : " + tabs[i].url + "</li>";
+						+ tabs[i].id + " : " + tabs[i].url + "</li>";
 		}
 		testStr += "</ul>"
 		popupMainDiv.innerHTML = testStr;
@@ -39,15 +44,9 @@ changeColor.onclick = function(element) {
 		//디버깅용
 		// document.body.innerText += document.body.innerHTML;
 	});
-		
-}
-
-function createTabList(){
-	
 }
 
 function addTabListEvent(){
-	
 	var tabList = document.querySelectorAll("#tabListUL li");
 	[].forEach.call(tabList, function(tab){
 		tab.addEventListener("click", tabClose);
@@ -56,5 +55,6 @@ function addTabListEvent(){
 
 function tabClose(elem){
 	var tabID = elem.getAttribute("name") * 1;
+	elem.remove();
 	chrome.tabs.remove(tabID);
 }
