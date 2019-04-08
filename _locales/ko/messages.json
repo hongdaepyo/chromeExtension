@@ -1,14 +1,14 @@
 {
 	"extName": {
-		"message": "dphong test extension",
-		"description": "alert(1)"
+		"message": "dphong's tap management",
+		"description": "extName"
 	},
 	"extension_sname": {
 		"message": "dphong's Chrome ext",
 		"description": "short name"
 	},
 	"extension_desc": {
-		"message": "dphong's Chrome ext description",
+		"message": "탭 리스트를 클릭하면 해당 탭이 닫히는 확장프로그램.",
 		"description": "description"
 	}
 }
