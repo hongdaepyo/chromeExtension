@@ -6,7 +6,7 @@
     "short_name": "__MSG_extension_sname__",
     "description": "__MSG_extension_desc__",
     "version": "0.0.1",
-    "version_name": "preview",
+    "version_name": "연습용",
 
     "browser_action": {
         "default_icon": "symbol_color.png",
